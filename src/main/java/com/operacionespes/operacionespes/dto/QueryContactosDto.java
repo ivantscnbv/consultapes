@@ -13,13 +13,20 @@ import lombok.Setter;
 public class QueryContactosDto {
 
     @JsonProperty("Titulo")
-    private String Titulo;
-    @JsonProperty("Nombre")
-    private String Nombre;
-    @JsonProperty("ApellidoPaterno")
-    private String ApellidoPaterno;
-    @JsonProperty("ApellidoMaterno")
-    private String ApellidoMaterno;
-    @JsonProperty("Cargo")
-    private Integer Cargo;
+    private String titulo;
+
+    @JsonProperty ("Nombre")
+    private String nombre;
+
+    @JsonProperty ("paterno")
+    private String paterno;
+
+    @JsonProperty("materno")
+    private String materno;
+
+    @JsonProperty("cargoId")
+    private Integer cargoId;
+
+    @JsonProperty("cargoDescripcion")
+    private String cargoDescripcion;
 }

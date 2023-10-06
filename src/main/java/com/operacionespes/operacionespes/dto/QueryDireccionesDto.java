@@ -12,20 +12,54 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryDireccionesDto {
 
-    @JsonProperty("TipoDireccion")
-    private Integer TipoDireccion;
-    @JsonProperty("Calle")
-    private String Calle;
-    @JsonProperty("CP")
-    private String CP;
+    @JsonProperty("DireccionId")
+    private Integer DireccionId;
+
+    @JsonProperty("TipoDireccionId")
+    private Integer tipoDireccion;
+
+    @JsonProperty("TipoDireccionDescripcion")
+    private Integer tipoDireccionDescripcion;
+
+    @JsonProperty("calleNumero")
+    private String calleNumero;
+
+    @JsonProperty("Ciudad")
+    private Integer ciudad;
+
+    @JsonProperty("codigoPostal")
+    private Integer codigoPostal;
+
     @JsonProperty("Colonia")
-    private String Colonia;
-    @JsonProperty("DelOMup")
-    private String DelOMup;
+    private String colonia;
+
+    @JsonProperty("ColoniaId")
+    private String coloniaId;
+
+    @JsonProperty ("DeloMup")
+    private String deloMup;
+
+    @JsonProperty ("DelegacionMunicipioId")
+    private String delegacionMunicipioId;
+
     @JsonProperty("Estado")
-    private String Estado;
+    private String estado;
+
+    @JsonProperty("EstadoPaisId")
+    private String estadoPaisId;
+
     @JsonProperty("Pais")
-    private String Pais;
+    private String pais;
+
+    @JsonProperty("PaisId")
+    private String paisId;
+
     @JsonProperty("Telefono")
-    private String Telefono;
+    private Integer telefono;
+
+    @JsonProperty("Faxes")
+    private String faxes;
+
+    @JsonProperty("Activos")
+    private Integer activos;
 }

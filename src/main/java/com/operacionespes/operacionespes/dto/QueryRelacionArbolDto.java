@@ -12,5 +12,5 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryRelacionArbolDto {
     @JsonProperty("ArbolId")
-    private Integer ArbolId;
+    private Integer arbolId;
 }

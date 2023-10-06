@@ -9,20 +9,20 @@ import java.util.List;
 
 public interface ObtenerSubSectoresActivosRepository  extends JpaRepository<SubSectores, Integer> {
 
-    @Query(value = "SELECT SubSectorId\n" +
-            "      ,LTRIM(RTRIM(SubSectorNombreLargo)) AS SubSectorNombreLargo\n" +
-            "  FROM SubSectores\n" +
-            "  WHERE EstadoId = 1\n" +
-            "  ORDER BY SubSectorNombreLargo", nativeQuery = true)
+    @Query("SELECT NEW com.operacionespes.operacionespes.dto.QuerySubSectoresActivosDto(SubSectorId" +
+            "  ,LTRIM(RTRIM(SubSectorNombreLargo)) AS SubSectorNombreLargo)" +
+            "  FROM SubSectores" +
+            "  WHERE EstadoId = 1" +
+            "  ORDER BY SubSectorNombreLargo")
     List<Object[]> obtenerTodosLosSubSectoresActivos ();
 
 
 
-    @Query (value = "SELECT SubSectorId" +
-            "  ,LTRIM(RTRIM(SubSectorNombreLargo)) AS SubSectorNombreLargo" +
+    @Query ("SELECT NEW com.operacionespes.operacionespes.dto.QuerySubSectoresActivosDto(SubSectorId" +
+            "  ,LTRIM(RTRIM(SubSectorNombreLargo)) AS SubSectorNombreLargo)" +
             "  FROM SubSectores" +
             "  WHERE EstadoId = 1 AND SubSectorId = :SubSectorId" +
-            "ORDER BY SubSectorNombreLargo", nativeQuery = true)
+            "ORDER BY SubSectorNombreLargo")
     List<Object[]> obtenerSubSectoresActivos (@Param("SubSectorId") Integer SubSectorId);
 
 }

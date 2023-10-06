@@ -1,5 +1,6 @@
 package com.operacionespes.operacionespes.controller;
 
+import com.operacionespes.operacionespes.dto.QuerySubSectoresActivosDto;
 import com.operacionespes.operacionespes.entity.SubSectores;
 import com.operacionespes.operacionespes.repository.ObtenerSubSectoresActivosRepository;
 import org.springframework.beans.factory.annotation.Autowired;

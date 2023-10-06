@@ -1,6 +1,7 @@
 package com.operacionespes.operacionespes.controller;
 
 import com.operacionespes.operacionespes.repository.DireccionesyContactosRepository;
+import com.operacionespes.operacionespes.response.ConsultaResultadoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +21,11 @@ public class DireccionesyContactosController {
     private DireccionesyContactosRepository direccionesyContactosRepository;
 
     @GetMapping("/consulta")
-    public ResponseEntity<ConsultaResultado> obtenerDireccionesyContactosQuery(
+    public ResponseEntity<ConsultaResultadoResponse> obtenerDireccionesyContactosQuery(
             @RequestParam("PersonaMoralId") Integer PersonaMoralId,
             @RequestParam("SubSectorId") Integer SubSectorId
     ) {
-        ConsultaResultado consultaResultado = new ConsultaResultado();
+        ConsultaResultadoResponse consultaResultado = new ConsultaResultadoResponse();
 
         // Paso 1: Realiza la primera consulta
         List<Integer> arbolIds = direccionesyContactosRepository.obtenerArbolIds(PersonaMoralId, SubSectorId);

@@ -71,4 +71,5 @@ public interface DireccionesyContactosRepository extends JpaRepository<Relacione
             "rd.DireccionId= :DireccionId",nativeQuery = true)
 
     List<Object[]> obtenerDireccionesIdQuery(@Param("DireccionId") Integer DireccionId);
+
 }
