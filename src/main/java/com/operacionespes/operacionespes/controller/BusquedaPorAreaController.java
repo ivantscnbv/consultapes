@@ -1,5 +1,9 @@
 package com.operacionespes.operacionespes.controller;
 
+import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
+import com.operacionespes.operacionespes.dto.QueryContactosDto;
+import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
+import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
 import com.operacionespes.operacionespes.repository.BusquedaClaveUnicaRepository;
 import com.operacionespes.operacionespes.repository.BusquedaPorAreaRepository;
 import com.operacionespes.operacionespes.response.BusquedaPorAreaResponse;
@@ -30,20 +34,19 @@ public class BusquedaPorAreaController {
     @GetMapping("/busquedaporarea")
     public List<BusquedaPorAreaResponse> query(@RequestParam("AreaId") String AreaId) {
         log.info("Dentro del metodo queryDatosGenerales de la clase BusquedaPorAreaController.");
-        List<Object[]> mainQueryResult = busquedaPorAreaRepository.queryDatosGenerales(AreaId);
+        List<QueryDatosGeneralesDto> mainQueryResult = busquedaPorAreaRepository.queryDatosGenerales(AreaId);
         if (mainQueryResult.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         List<BusquedaPorAreaResponse> responses = new ArrayList<>();
-        for(Object[] row : mainQueryResult){
-            Integer ArbolId = (Integer) row[0];
-
+        for(QueryDatosGeneralesDto row : mainQueryResult){
+            Integer ArbolId = row.getArbolId();
             BusquedaPorAreaResponse response = new BusquedaPorAreaResponse();
             response.busquedaPorArea1(Collections.singletonList(row));
 
-            List<Object[]> subQueryClaves = busquedaClaveUnicaRepository.queryClavesDinamicas(ArbolId);
-            List<Object[]> subQueryDirecciones = busquedaClaveUnicaRepository.queryDirecciones(ArbolId);
-            List<Object[]> subQueryContactos = busquedaClaveUnicaRepository.queryContactos(ArbolId);
+            List<QueryClavesDinamicasDto> subQueryClaves = busquedaClaveUnicaRepository.queryClavesDinamicas(ArbolId);
+            List<QueryDireccionesDto> subQueryDirecciones = busquedaClaveUnicaRepository.queryDirecciones(ArbolId);
+            List<QueryContactosDto> subQueryContactos = busquedaClaveUnicaRepository.queryContactos(ArbolId);
 
             response.busquedaPorArea2(subQueryClaves);
             response.busquedaPorArea3(subQueryDirecciones);
