@@ -21,4 +21,7 @@ public class Areas {
 
     @Column(name = "EstadoId")
     private Integer EstadoId;
+
+    @Column(name = "AreaNombre", columnDefinition = "nchar(256)", length = 256)
+    private String AreaNombre;
 }

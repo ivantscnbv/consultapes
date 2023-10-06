@@ -1,5 +1,6 @@
 package com.operacionespes.operacionespes.response;
 
+import com.operacionespes.operacionespes.dto.ObtenerEntidadesPorFiltroDto;
 import lombok.Getter;
 
 import java.util.List;
@@ -7,9 +8,9 @@ import java.util.List;
 @Getter
 public class ObtenerEntidadesPorFiltroResponse {
 
-    private List<Object[]> dataQueryObtenerEntidadesPorFiltro;
+    private List<ObtenerEntidadesPorFiltroDto> dataQueryObtenerEntidadesPorFiltro;
 
-    public void obtenerEntidadesPorFiltro1 (List<Object[]> dataQueryObtenerEntidadesPorFiltro){
+    public void obtenerEntidadesPorFiltro1 (List<ObtenerEntidadesPorFiltroDto> dataQueryObtenerEntidadesPorFiltro){
         this.dataQueryObtenerEntidadesPorFiltro = dataQueryObtenerEntidadesPorFiltro;
     }
 }

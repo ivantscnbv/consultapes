@@ -1,5 +1,7 @@
 package com.operacionespes.operacionespes.controller;
 
+
+import com.operacionespes.operacionespes.dto.QueryRelacionArbolDto;
 import com.operacionespes.operacionespes.repository.BusquedaArbolIdRepository;
 import com.operacionespes.operacionespes.response.BusquedaArbolIdResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +25,9 @@ public class BusquedaArbolIdController {
 
     @GetMapping("/busquedaarbolid")
     public BusquedaArbolIdResponse queryRelacionArbol(@RequestParam Integer PersonaMoralId,
-                                                      @RequestParam Integer SubSectorId){
+                                                       @RequestParam Integer SubSectorId){
         log.info("Dentro del metodo queryRelacionArbol de la clase BusquedaArbolIdController");
-        List<Object[]> result = busquedaArbolIdRepository.queryRelacionArbol(PersonaMoralId, SubSectorId);
+        List<QueryRelacionArbolDto> result = busquedaArbolIdRepository.queryRelacionArbol(PersonaMoralId, SubSectorId);
         if(result.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

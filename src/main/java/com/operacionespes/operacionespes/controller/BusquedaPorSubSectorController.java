@@ -1,5 +1,7 @@
 package com.operacionespes.operacionespes.controller;
 
+import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
+import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
 import com.operacionespes.operacionespes.repository.BusquedaClaveUnicaRepository;
 import com.operacionespes.operacionespes.repository.BusquedaPorSubSectorRepository;
 import com.operacionespes.operacionespes.response.BusquedaPorSubSectorResponse;
@@ -29,18 +31,18 @@ public class BusquedaPorSubSectorController {
     @GetMapping("/busquedaporsubsector")
     public List<BusquedaPorSubSectorResponse> query(@RequestParam("SubSectorId") Integer SubSectorId){
         log.info("Dentro del metodo query de la clase BusquedaPorSubSectorController.");
-        List<Object[]> mainQueryResult = busquedaPorSubSectorRepository.queryDatosGenerales(SubSectorId);
+        List<QueryDatosGeneralesDto> mainQueryResult = busquedaPorSubSectorRepository.queryDatosGenerales(SubSectorId);
         if(mainQueryResult.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         List<BusquedaPorSubSectorResponse> responses = new ArrayList<>();
-        for(Object[] row : mainQueryResult){
-            Integer ArbolId = (Integer) row[0];
+        for(QueryDatosGeneralesDto row : mainQueryResult){
+            Integer ArbolId = row.getArbolId();
 
             BusquedaPorSubSectorResponse response = new BusquedaPorSubSectorResponse();
             response.busquedaPorSubSector1(Collections.singletonList(row));
 
-            List<Object[]> subQueryClaves = busquedaClaveUnicaRepository.queryClavesDinamicas(ArbolId);
+            List<QueryClavesDinamicasDto> subQueryClaves = busquedaClaveUnicaRepository.queryClavesDinamicas(ArbolId);
 
             response.busquedaPorSubSector2(subQueryClaves);
 

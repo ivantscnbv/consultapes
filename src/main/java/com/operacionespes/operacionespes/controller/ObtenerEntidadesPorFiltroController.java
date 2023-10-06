@@ -1,5 +1,6 @@
 package com.operacionespes.operacionespes.controller;
 
+import com.operacionespes.operacionespes.dto.ObtenerEntidadesPorFiltroDto;
 import com.operacionespes.operacionespes.repository.ObtenerEntidadesPorFiltroRepository;
 import com.operacionespes.operacionespes.response.ObtenerEntidadesPorFiltroResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -21,13 +22,13 @@ public class ObtenerEntidadesPorFiltroController {
     @Autowired
     private ObtenerEntidadesPorFiltroRepository obtenerEntidadesPorFiltroRepository;
 
-    @GetMapping("/obtenerentidadfiltro")
+    @GetMapping("/ ")
     public ObtenerEntidadesPorFiltroResponse queryBuilder(@RequestParam(required = false) String SubSectorNombreLargo,
                                                           @RequestParam(required = false) Integer SubSectorId,
                                                           @RequestParam(required = false) Integer PersonaMoralId){
         log.info("Dentro del metodo queryBuilder de la clase ObtenerEntidadesPorFiltroController");
         ObtenerEntidadesPorFiltroResponse response = new ObtenerEntidadesPorFiltroResponse();
-        List<Object[]> result = obtenerEntidadesPorFiltroRepository.queryObtenerEntidadesFiltro(SubSectorNombreLargo,
+        List<ObtenerEntidadesPorFiltroDto> result = obtenerEntidadesPorFiltroRepository.queryObtenerEntidadesFiltro(SubSectorNombreLargo,
                 SubSectorId, PersonaMoralId);
         if(result.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);

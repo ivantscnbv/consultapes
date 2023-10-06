@@ -1,5 +1,6 @@
 package com.operacionespes.operacionespes.repository;
 
+import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
 import com.operacionespes.operacionespes.entity.RelacionesArbol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,13 +12,13 @@ import java.util.List;
 @Repository
 public interface BusquedaPorSubSectorRepository extends JpaRepository<RelacionesArbol, Integer> {
 
-    @Query(value = "SELECT a.ArbolId, " +
-            "a.PersonaMoralId AS Clave_PES, " +
+    @Query(value = "SELECT NEW com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto(a.ArbolId, " +
+            "a.PersonaMoralId, " +
             "a.SubSectorId, " +
-            "TRIM(b.PersonaMoralRazonSocial) AS Razón_Social, " +
-            "b.PersonaMoralNomcorto AS NombreCorto, " +
-            "b.PersonaMoralRFC AS RFC, " +
-            "b.PersonaMoralFechaConstitucion AS FechaConstitucion, " +
+            "TRIM(b.PersonaMoralRazonSocial) AS RazonSocial, " +
+            "b.PersonaMoralNomcorto, " +
+            "b.PersonaMoralRFC, " +
+            "b.PersonaMoralFechaConstitucion, " +
             "CASE a.Filial " +
             "WHEN 1 THEN 'Filia' " +
             "ELSE 'Nacional' " +
@@ -27,7 +28,7 @@ public interface BusquedaPorSubSectorRepository extends JpaRepository<Relaciones
             "COALESCE(a.GrupoFinanciero, 0) AS GrupoFinanciero, " +
             "a.SituacionId, " +
             "d.EstatusId, " +
-            "f.GrupoEstatusId " +
+            "f.GrupoEstatusId) " +
             "FROM RelacionesArbol a, " +
             "PersonasMorales b, " +
             "SubSectores c, " +
@@ -47,5 +48,5 @@ public interface BusquedaPorSubSectorRepository extends JpaRepository<Relaciones
             "f.EstadoId = 1 AND " +
             "g.EstadoId = 1 AND " +
             "a.SubSectorId = :SubSectorId")
-    List<Object[]> queryDatosGenerales(@Param("SubSectorId") Integer SubSectorId);
+    List<QueryDatosGeneralesDto> queryDatosGenerales(@Param("SubSectorId") Integer SubSectorId);
 }

@@ -1,8 +1,11 @@
 package com.operacionespes.operacionespes.controller;
 
+import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
+import com.operacionespes.operacionespes.dto.QueryContactosDto;
+import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
+import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
 import com.operacionespes.operacionespes.repository.BusquedaClaveUnicaRepository;
 import com.operacionespes.operacionespes.response.BusquedaClaveUnicaResponse;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,13 +28,13 @@ public class BusquedaClaveUnicaController {
     @GetMapping("/busquedaclaveunica")
     public BusquedaClaveUnicaResponse queryDatosGenerales(@RequestParam Integer ArbolId){
         log.info("Dentro del metodo queryDatosGenerales de la clase BusquedaClaveUnicaController");
-        List<Object[]> result = busquedaClaveUnicaRepository.queryDatosGenerales(ArbolId);
+        List<QueryDatosGeneralesDto> result = busquedaClaveUnicaRepository.queryDatosGenerales(ArbolId);
         if(result.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        List<Object[]> result2 = busquedaClaveUnicaRepository.queryClavesDinamicas(ArbolId);
-        List<Object[]> result3 = busquedaClaveUnicaRepository.queryDirecciones(ArbolId);
-        List<Object[]> result4 = busquedaClaveUnicaRepository.queryContactos(ArbolId);
+        List<QueryClavesDinamicasDto> result2 = busquedaClaveUnicaRepository.queryClavesDinamicas(ArbolId);
+        List<QueryDireccionesDto> result3 = busquedaClaveUnicaRepository.queryDirecciones(ArbolId);
+        List<QueryContactosDto> result4 = busquedaClaveUnicaRepository.queryContactos(ArbolId);
         BusquedaClaveUnicaResponse response = new BusquedaClaveUnicaResponse();
         response.busquedaClaveUnica1(result);
         response.busquedaClaveUnica2(result2);

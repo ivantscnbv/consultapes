@@ -22,6 +22,6 @@ public class SubSectores {
     @Column(name = "EstadoId")
     private Integer EstadoId;
 
-    @Column(name = "SubSectorNombreLargo", columnDefinition = "nchar(200)" )
+    @Column(name = "SubSectorNombreLargo", columnDefinition = "nchar(200)", length = 200)
     private String SubSectorNombreLargo;
 }

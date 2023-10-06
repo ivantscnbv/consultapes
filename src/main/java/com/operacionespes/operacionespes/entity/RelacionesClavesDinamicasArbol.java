@@ -1,6 +1,5 @@
 package com.operacionespes.operacionespes.entity;
 
-import ch.qos.logback.core.boolex.EvaluationException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
