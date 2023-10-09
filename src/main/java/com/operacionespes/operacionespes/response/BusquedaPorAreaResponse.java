@@ -1,9 +1,6 @@
 package com.operacionespes.operacionespes.response;
 
-import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
-import com.operacionespes.operacionespes.dto.QueryContactosDto;
-import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
-import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
+import com.operacionespes.operacionespes.dto.*;
 import lombok.Getter;
 
 import java.util.List;

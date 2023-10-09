@@ -36,4 +36,7 @@ public class RelacionesContactos {
 
     @Column(name = "ArbolId")
     private Integer ArbolId;
+
+    @Column (name = "EstadoId")
+    private Integer EstadoId;
 }

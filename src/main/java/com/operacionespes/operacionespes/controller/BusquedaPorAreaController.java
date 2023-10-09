@@ -1,9 +1,6 @@
 package com.operacionespes.operacionespes.controller;
 
-import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
-import com.operacionespes.operacionespes.dto.QueryContactosDto;
-import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
-import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
+import com.operacionespes.operacionespes.dto.*;
 import com.operacionespes.operacionespes.repository.BusquedaClaveUnicaRepository;
 import com.operacionespes.operacionespes.repository.BusquedaPorAreaRepository;
 import com.operacionespes.operacionespes.response.BusquedaPorAreaResponse;

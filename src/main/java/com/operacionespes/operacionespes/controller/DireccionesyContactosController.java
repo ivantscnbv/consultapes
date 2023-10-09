@@ -1,5 +1,8 @@
 package com.operacionespes.operacionespes.controller;
 
+import com.operacionespes.operacionespes.dto.QueryContactosDto;
+import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
+import com.operacionespes.operacionespes.dto.QueryRelacionArbolDto;
 import com.operacionespes.operacionespes.repository.DireccionesyContactosRepository;
 import com.operacionespes.operacionespes.response.ConsultaResultadoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,34 +24,43 @@ public class DireccionesyContactosController {
     private DireccionesyContactosRepository direccionesyContactosRepository;
 
     @GetMapping("/consulta")
-    public ResponseEntity<ConsultaResultadoResponse> obtenerDireccionesyContactosQuery(
+    public ResponseEntity<ConsultaResultadoResponse> consultarDireccionesyContactos(
             @RequestParam("PersonaMoralId") Integer PersonaMoralId,
             @RequestParam("SubSectorId") Integer SubSectorId
     ) {
         ConsultaResultadoResponse consultaResultado = new ConsultaResultadoResponse();
 
-        // Paso 1: Realiza la primera consulta
-        List<Integer> arbolIds = direccionesyContactosRepository.obtenerArbolIds(PersonaMoralId, SubSectorId);
+        try {
+            // Paso 1: Realiza la primera consulta
+            List<QueryRelacionArbolDto> resultadosIniciales = direccionesyContactosRepository.obtenerArbolIds(PersonaMoralId, SubSectorId);
+            consultaResultado.setResultadosIniciales(resultadosIniciales);
 
-        // Paso 2: Utiliza el resultado de la primera consulta como parámetro para la segunda consulta
-        List<Object[]> resultadosIntermedios = new ArrayList<>();
-        for (Integer ArbolId : arbolIds) {
-            List<Object[]> direccionesyContactos = direccionesyContactosRepository.obtenerDireccionesyContactosQuery(ArbolId);
-            resultadosIntermedios.addAll(direccionesyContactos);
+            // Paso 2: Utiliza el resultado de la primera consulta como parámetro para la segunda consulta
+            List<QueryDireccionesDto> resultadosIntermedios = new ArrayList<>();
+            for (QueryRelacionArbolDto ArbolDto : resultadosIniciales) {
+                Integer ArbolId = ArbolDto.getArbolId();
+                List<QueryDireccionesDto> direccionesyContactosQuery = direccionesyContactosRepository.obtenerDireccionesyContactosQuery(ArbolId);
+                resultadosIntermedios.addAll(direccionesyContactosQuery);
+            }
+            consultaResultado.setResultadosIntermedios(resultadosIntermedios);
+
+            // Paso 3: Utiliza el resultado de la segunda consulta como parámetro para la tercera consulta
+            List<QueryContactosDto> resultadosFinales = new ArrayList<>();
+
+            for (QueryDireccionesDto row : resultadosIntermedios) {
+                Integer DireccionId = row.getDireccionId();
+                List<QueryContactosDto> contactos = direccionesyContactosRepository.obtenerContactosIdQuery(DireccionId);
+                    resultadosFinales.addAll(contactos);
+
+            }
+            consultaResultado.setResultadosFinales(resultadosFinales);
+
+            // Devuelve los resultados combinados
+            return new ResponseEntity<>(consultaResultado, HttpStatus.OK);
+        } catch (Exception e) {
+            // Manejo de excepciones
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        consultaResultado.setResultadosIntermedios(resultadosIntermedios);
-
-        // Paso 3: Utiliza el resultado de la segunda consulta como parámetro para la tercera consulta
-        List<Object[]> resultadosFinales = new ArrayList<>();
-        for (Object[] direccionyContacto : resultadosIntermedios) {
-            Integer DireccionId = (Integer) direccionyContacto[0];
-            List<Object[]> direccionesId = direccionesyContactosRepository.obtenerDireccionesIdQuery(DireccionId);
-            resultadosFinales.addAll(direccionesId);
-        }
-        consultaResultado.setResultadosFinales(resultadosFinales);
-
-        // Devuelve los resultados combinados
-        return new ResponseEntity<>(consultaResultado, HttpStatus.OK);
     }
 }
 

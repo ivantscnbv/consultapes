@@ -45,4 +45,13 @@ public class RelacionesDirecciones {
 
     @Column(name = "RelacionesArbol_ArbolId")
     private Integer RelacionesArbol_ArbolId;
+
+    @Column(name = "EstadoId")
+    private Integer EstadoId;
+
+    @Column(name = "DireccionCiudad", columnDefinition = "nchar(100)")
+    private String DireccionCiudad;
+
+    @Column(name = "DireccionFax", columnDefinition = "nchar(200)")
+    private String DireccionFax;
 }

@@ -2,6 +2,7 @@ package com.operacionespes.operacionespes.response;
 
 import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
 import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
+import com.operacionespes.operacionespes.dto.QuerySubSectoresActivosDto;
 import lombok.Getter;
 
 import java.util.List;

@@ -1,9 +1,6 @@
 package com.operacionespes.operacionespes.repository;
 
-import com.operacionespes.operacionespes.dto.QueryClavesDinamicasDto;
-import com.operacionespes.operacionespes.dto.QueryContactosDto;
-import com.operacionespes.operacionespes.dto.QueryDatosGeneralesDto;
-import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
+import com.operacionespes.operacionespes.dto.*;
 import com.operacionespes.operacionespes.entity.RelacionesArbol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

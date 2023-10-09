@@ -18,15 +18,15 @@ public class QueryContactosDto {
     @JsonProperty ("Nombre")
     private String nombre;
 
-    @JsonProperty ("paterno")
+    @JsonProperty ("Paterno")
     private String paterno;
 
-    @JsonProperty("materno")
+    @JsonProperty("Materno")
     private String materno;
 
-    @JsonProperty("cargoId")
+    @JsonProperty("CargoId")
     private Integer cargoId;
 
-    @JsonProperty("cargoDescripcion")
+    @JsonProperty("CargoDescripcion")
     private String cargoDescripcion;
 }

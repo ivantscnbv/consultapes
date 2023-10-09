@@ -1,28 +1,32 @@
 package com.operacionespes.operacionespes.repository;
 
+import com.operacionespes.operacionespes.dto.QueryContactosDto;
+import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
+import com.operacionespes.operacionespes.dto.QueryRelacionArbolDto;
 import com.operacionespes.operacionespes.entity.RelacionesArbol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 public interface DireccionesyContactosRepository extends JpaRepository<RelacionesArbol,Integer> {
 
     // Consulta para obtener los ArbolId
-    @Query(value = "SELECT ArbolId " +
+    @Query("SELECT ArbolId " +
             "FROM RelacionesArbol " +
-            "WHERE PersonaMoralId = :PersonaMoralId AND SubSectorId = :SubSectorId ",
-            nativeQuery = true)
-    List<Integer> obtenerArbolIds(@Param("PersonaMoralId") Integer personaMoralId,
-                                  @Param("SubSectorId") Integer subSectorId);
+            "WHERE PersonaMoralId = :PersonaMoralId AND SubSectorId = :SubSectorId ")
 
-    @Query(value = "SELECT a.DireccionId, " +
-            "a.TipoDireccionId AS tipoDireccionId, " +
-            "RTRIM(f.TipoDireccionNombre) AS tipoDireccionDescripcion, " +
-            "RTRIM(a.DireccionCalle) AS calleNumero, " +
+    List<QueryRelacionArbolDto> obtenerArbolIds(@Param("PersonaMoralId") Integer PersonaMoralId,
+                                                @Param("SubSectorId") Integer SubSectorId);
+
+    @Query("SELECT a.DireccionId, " +
+            "a.TipoDireccionId AS TipoDireccionId, " +
+            "RTRIM(f.TipoDireccionNombre) AS TipoDireccionDescripcion, " +
+            "RTRIM(a.DireccionCalle) AS CalleNumero, " +
             "RTRIM(a.DireccionCiudad) AS Ciudad, " +
-            "a.DireccionCP AS codigoPostal, " +
+            "a.DireccionCP AS CodigoPostal, " +
             "RTRIM(c.ColoniaNombreLargo) AS Colonia, " +
             "a.DireccionColonia AS ColoniaId, " +
             "RTRIM(d.MunicipioNombreLargo) AS DelOMup, " +
@@ -32,8 +36,8 @@ public interface DireccionesyContactosRepository extends JpaRepository<Relacione
             "RTRIM(b.PaisNombre) AS Pais, " +
             "a.PaisId, " +
             "RTRIM(a.DireccionTelefono) AS Telefono, " +
-            "RTRIM(a.DireccionFax) AS faxes, " +
-            "RTRIM(es.EstadoId) AS Activos " +
+            "RTRIM(a.DireccionFax) AS Faxes, " +
+            "es.EstadoId AS Activos " +
             "FROM RelacionesDirecciones a, " +
             "Paises b, " +
             "Colonia c, " +
@@ -51,25 +55,23 @@ public interface DireccionesyContactosRepository extends JpaRepository<Relacione
             "AND a.PaisId = e.PaisId " +
             "AND a.TipoDireccionId = f.TipoDireccionId " +
             "AND es.EstadoId = 1 " +
-            "AND a.RelacionesArbol_ArbolId = :ArbolId ",
-            nativeQuery = true)
-    List<Object[]> obtenerDireccionesyContactosQuery(@Param("ArbolId") Integer ArbolId);
+            "AND a.RelacionesArbol_ArbolId = :ArbolId ")
+    List<QueryDireccionesDto> obtenerDireccionesyContactosQuery(@Param("ArbolId") Integer ArbolId);
 
-    @Query( value = "SELECT RTRIM(c.ContactoTitulo) AS Titulo,\n" +
-            "RTRIM(c.ContactoNombre) AS Nombre,\n" +
-            "RTRIM(c.ContactoPaterno) AS paterno,\n" +
-            "RTRIM(c.ContactoMaterno) AS materno,\n" +
-            "c.CargoId as cargoId,\n" +
-            "RTRIM(d.CargoNombre) AS cargoDescripcion\n" +
-            "FROM RelacionesContactos c JOIN\n" +
-            "Cargos d ON (c.CargoId=d.CargoId)\n" +
-            "JOIN RelacionesDirecciones rd ON rd.RelacionesArbol_ArbolId = c.ArbolId\n" +
-            "WHERE \n" +
-            "c.EstadoId=1 AND\n" +
-            "--d.EstadoId=1 AND (el estado del cargo no debe afectar a la consulta de contactos)\n" +
-            "rd.EstadoId = 1 AND\n" +
-            "rd.DireccionId= :DireccionId",nativeQuery = true)
+    @Query("SELECT RTRIM (c.ContactoTitulo) AS Titulo, " +
+            "RTRIM(c.ContactoNombre) AS Nombre, " +
+            "RTRIM(c.ContactoPaterno) AS Paterno, " +
+            "RTRIM(c.ContactoMaterno) AS Materno, " +
+            "c.CargoId AS CargoId, " +
+            "RTRIM(d.CargoNombre) AS CargoDescripcion " +
+            "FROM RelacionesContactos c JOIN " +
+            "Cargos d ON (c.CargoId=d.CargoId) " +
+            "JOIN RelacionesDirecciones rd ON rd.RelacionesArbol_ArbolId = c.ArbolId " +
+            "WHERE " +
+            "c.EstadoId = 1 AND " +
+            "rd.EstadoId = 1 AND " +
+            "rd.DireccionId= :DireccionId")
 
-    List<Object[]> obtenerDireccionesIdQuery(@Param("DireccionId") Integer DireccionId);
+    List<QueryContactosDto> obtenerContactosIdQuery(@Param("DireccionId") Integer DireccionId);
 
 }

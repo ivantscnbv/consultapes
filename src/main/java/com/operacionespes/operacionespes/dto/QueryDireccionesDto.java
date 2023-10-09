@@ -15,17 +15,17 @@ public class QueryDireccionesDto {
     @JsonProperty("DireccionId")
     private Integer DireccionId;
 
-    @JsonProperty("TipoDireccionId")
+    @JsonProperty("tipoDireccionId")
     private Integer tipoDireccion;
 
-    @JsonProperty("TipoDireccionDescripcion")
-    private Integer tipoDireccionDescripcion;
+    @JsonProperty("tipoDireccionDescripcion")
+    private String tipoDireccionDescripcion;
 
     @JsonProperty("calleNumero")
     private String calleNumero;
 
     @JsonProperty("Ciudad")
-    private Integer ciudad;
+    private String ciudad;
 
     @JsonProperty("codigoPostal")
     private Integer codigoPostal;
@@ -34,13 +34,13 @@ public class QueryDireccionesDto {
     private String colonia;
 
     @JsonProperty("ColoniaId")
-    private String coloniaId;
+    private Integer coloniaId;
 
     @JsonProperty ("DeloMup")
     private String deloMup;
 
-    @JsonProperty ("DelegacionMunicipioId")
-    private String delegacionMunicipioId;
+    @JsonProperty ("delegacionMunicipioId")
+    private Integer delegacionMunicipioId;
 
     @JsonProperty("Estado")
     private String estado;
@@ -52,13 +52,13 @@ public class QueryDireccionesDto {
     private String pais;
 
     @JsonProperty("PaisId")
-    private String paisId;
+    private Integer paisId;
 
     @JsonProperty("Telefono")
     private Integer telefono;
 
     @JsonProperty("Faxes")
-    private String faxes;
+    private Integer faxes;
 
     @JsonProperty("Activos")
     private Integer activos;
