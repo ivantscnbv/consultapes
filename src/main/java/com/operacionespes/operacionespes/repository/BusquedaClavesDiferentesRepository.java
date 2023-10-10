@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface BusquedaClavesDiferentesRepository extends JpaRepository<RelacionesArbol, Integer> {
 
-    @Query(value = "SELECT NEW com.operacionespes.operacionespes.dto.QueryClavesDiferentesDto(ra.ArbolId, ra.PersonaMoralId, ra.SubSectorId) " +
+    @Query(value = "SELECT NEW com.operacionespes.operacionespes.dto.QueryClavesDiferentesDto(ra.ArbolId, ra.PersonaMoralId as ClavePES, ra.SubSectorId) " +
             "from RelacionesArbol ra " +
             "where ArbolId = (SELECT RelacionesArbol_ArbolId from RelacionesClavesDinamicasArbol rcd " +
             "where rcd.ClaveDinamicaId = :ClaveDinamicaId and rcd.Valor_ClaveDinamica = :Valor_ClaveDinamica)")

@@ -20,7 +20,7 @@ public class Cargos {
     @Column (name = "CargoId")
     private Integer CargoId;
 
-    @Column (name = "CargoNombre" , columnDefinition = "nchar(100)")
+    @Column (name = "CargoNombre" , columnDefinition = "nchar(100)", length = 100)
     private String CargoNombre;
 
     @Column (name = "EstadoId")

@@ -14,7 +14,7 @@ public class QueryClavesDiferentesDto {
 
     @JsonProperty("ArbolId")
     private Integer ArbolId;
-    @JsonProperty("PersonaMoralId")
+    @JsonProperty("ClavePES")
     private Integer PersonaMoralId;
     @JsonProperty("SubSectorId")
     private Integer SubSectorId;

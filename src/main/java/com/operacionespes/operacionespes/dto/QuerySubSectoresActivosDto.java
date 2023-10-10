@@ -15,9 +15,6 @@ public class QuerySubSectoresActivosDto {
 
     @JsonProperty("SubSectorId")
     private Integer subSectorId;
-
     @JsonProperty("SubSectorNombreLargo")
     private String SubSectorNombreLargo;
-
-
 }

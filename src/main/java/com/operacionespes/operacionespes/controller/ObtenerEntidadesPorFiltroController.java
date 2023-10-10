@@ -22,7 +22,7 @@ public class ObtenerEntidadesPorFiltroController {
     @Autowired
     private ObtenerEntidadesPorFiltroRepository obtenerEntidadesPorFiltroRepository;
 
-    @GetMapping("/ ")
+    @GetMapping("/obtenerentidadesporfiltro")
     public ObtenerEntidadesPorFiltroResponse queryBuilder(@RequestParam(required = false) String SubSectorNombreLargo,
                                                           @RequestParam(required = false) Integer SubSectorId,
                                                           @RequestParam(required = false) Integer PersonaMoralId){

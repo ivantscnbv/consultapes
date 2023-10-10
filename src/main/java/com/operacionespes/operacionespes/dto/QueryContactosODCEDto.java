@@ -10,20 +10,17 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryContactosDto {
-
+public class QueryContactosODCEDto {
     @JsonProperty("Titulo")
     private String titulo;
-
     @JsonProperty ("Nombre")
     private String nombre;
-
-    @JsonProperty ("ApellidoPaterno")
+    @JsonProperty ("Paterno")
     private String paterno;
-
-    @JsonProperty("ApellidoMaterno")
+    @JsonProperty("Materno")
     private String materno;
-
-    @JsonProperty("Cargo")
-    private Integer cargo;
+    @JsonProperty("CargoId")
+    private Integer cargoId;
+    @JsonProperty("CargoDescripcion")
+    private String cargoDescripcion;
 }

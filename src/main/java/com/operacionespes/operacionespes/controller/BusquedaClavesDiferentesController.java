@@ -40,7 +40,6 @@ public class BusquedaClavesDiferentesController {
             response.setDataQueryClavesDiferentes(result);
             return ResponseEntity.ok(response);
         }
-        //idea robada de stackoverflow xddxd
         Pageable topOne = PageRequest.of(0, 1);
         List<QueryHistoricoDto> result2 = busquedaClavesDiferentesRepository.queryHistorico(ClaveDinamicaId,
                 Valor_ClaveDinamica, topOne);
