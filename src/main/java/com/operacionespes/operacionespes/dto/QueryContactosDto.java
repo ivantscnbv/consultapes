@@ -12,18 +12,18 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryContactosDto {
 
-    @JsonProperty("Titulo")
-    private String titulo;
+    @JsonProperty("ContactoTitulo")
+    private String contactoTitulo;
+    @JsonProperty ("ContactoNombre")
+    private String contactoNombre;
+    @JsonProperty ("ContactoPaterno")
+    private String contactoPaterno;
+    @JsonProperty("ContactoMaterno")
+    private String contactoMaterno;
+    @JsonProperty("CargoId")
+    private Integer cargoId;
+    @JsonProperty("CargoNombre")
+    private String cargoNombre;
 
-    @JsonProperty ("Nombre")
-    private String nombre;
 
-    @JsonProperty ("ApellidoPaterno")
-    private String paterno;
-
-    @JsonProperty("ApellidoMaterno")
-    private String materno;
-
-    @JsonProperty("Cargo")
-    private Integer cargo;
 }
