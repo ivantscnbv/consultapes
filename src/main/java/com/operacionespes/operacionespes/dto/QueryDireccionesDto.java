@@ -12,38 +12,20 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryDireccionesDto {
 
-    @JsonProperty("DireccionId")
-    private Integer DireccionId;
-    @JsonProperty("TipoDireccionId")
+    @JsonProperty("TipoDireccion")
     private Integer TipoDireccion;
-    @JsonProperty("TipoDireccionNombre")
-    private String tipoDireccionNombre;
-    @JsonProperty("DirecccionCalle")
-    private String direcccionCalle;
-    @JsonProperty("DireccionCiudad")
-    private String direccionCiudad;
-    @JsonProperty("CodigoPostal")
-    private Integer codigoPostal;
-    @JsonProperty("ColoniaNombreLargo")
-    private String coloniaNombreLargo;
-    @JsonProperty("ColoniaId")
-    private Integer coloniaId;
-    @JsonProperty ("MunicipioNombreLargo")
-    private String municipioNombreLargo;
-    @JsonProperty ("delegacionMunicipioId")
-    private Integer delegacionMunicipioId;
-    @JsonProperty("EstadoPaisNombre")
-    private String estadoPaisNombre;
-    @JsonProperty("EstadoPaisId")
-    private Integer estadoPaisId;
-    @JsonProperty("PaisNombre")
-    private String paisNombre;
-    @JsonProperty("PaisId")
-    private String paisId;
-    @JsonProperty("DireccionTelefono")
-    private Integer direccionTelefono;
-    @JsonProperty("DireccionFax")
-    private String direccionFax;
-    @JsonProperty("EstadoId")
-    private Integer estadoId;
+    @JsonProperty("Calle")
+    private String Calle;
+    @JsonProperty("CP")
+    private String CP;
+    @JsonProperty("Colonia")
+    private String Colonia;
+    @JsonProperty("DelOMup")
+    private String DelOMup;
+    @JsonProperty("Estado")
+    private String Estado;
+    @JsonProperty("Pais")
+    private String Pais;
+    @JsonProperty("Telefono")
+    private String Telefono;
 }

@@ -1,14 +1,11 @@
-package com.operacionespes.operacionespes.repository;
+/*package com.operacionespes.operacionespes.repository;
 
-import com.operacionespes.operacionespes.dto.QueryContactosDto;
+import com.operacionespes.operacionespes.dto.QueryContactosODCEDto;
 import com.operacionespes.operacionespes.dto.QueryDireccionesODCEDto;
-import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
-import com.operacionespes.operacionespes.dto.QueryRelacionArbolDto;
 import com.operacionespes.operacionespes.entity.RelacionesArbol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,9 +19,9 @@ public interface DireccionesyContactosRepository extends JpaRepository<Relacione
     List<Integer> obtenerArbolIds(@Param("PersonaMoralId") Integer personaMoralId,
                                   @Param("SubSectorId") Integer subSectorId);
 
-    @Query("SELECT NEW com.operacionespes.operacionespes.dto.QueryDireccionesDto(" +
+    @Query("SELECT NEW com.operacionespes.operacionespes.dto.QueryDireccionesODCEDto(" +
             "a.DireccionId, " +
-            "a.tipoDireccionId, " +
+            "a.TipoDireccionId, " +
             "RTRIM(t1_0.TipoDireccionNombre), " +
             "RTRIM(a.DireccionCalle), " +
             "RTRIM(a.DireccionCiudad), " +
@@ -53,10 +50,10 @@ public interface DireccionesyContactosRepository extends JpaRepository<Relacione
             "AND a.TipoDireccionId = t1_0.TipoDireccionId " +
             "AND e2_0.EstadoId = 1 " +
             "AND a.RelacionesArbol_ArbolId = :ArbolId")
-    List<QueryDireccionesDto> obtenerDireccionesQuery(@Param("ArbolId") Integer ArbolId);
+    List<QueryDireccionesODCEDto> obtenerDireccionesQuery(@Param("ArbolId") Integer ArbolId);
 
 
-    @Query( "SELECT NEW com.operacionespes.operacionespes.dto.QueryContactosDto(RTRIM(c.ContactoTitulo) AS Titulo, " +
+    @Query( "SELECT NEW com.operacionespes.operacionespes.dto.QueryContactosODCEDto(RTRIM(c.ContactoTitulo) AS Titulo, " +
             "RTRIM(c.ContactoNombre) AS Nombre, " +
             "RTRIM(c.ContactoPaterno) AS paterno, " +
             "RTRIM(c.ContactoMaterno) AS materno, " +
@@ -70,6 +67,6 @@ public interface DireccionesyContactosRepository extends JpaRepository<Relacione
             "rd.EstadoId = 1 AND " +
             "rd.DireccionId= :DireccionId ")
 
-    List<QueryContactosDto> obtenerContactosIdQuery(@Param("DireccionId") Integer DireccionId);
-}
+    List<QueryContactosODCEDto> obtenerContactosIdQuery(@Param("DireccionId") Integer DireccionId);
+}*/
 

@@ -19,6 +19,6 @@ public class TipoDireccion {
     @Column (name = "TipoDireccionId")
     private Integer TipoDireccionId;
 
-    @Column (name = "TipoDireccionNombre" , columnDefinition = "nchar(50)")
+    @Column (name = "TipoDireccionNombre" , columnDefinition = "nchar(50)", length = 50)
     private String TipoDireccionNombre;
 }

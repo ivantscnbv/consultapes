@@ -49,7 +49,7 @@ public class RelacionesDirecciones {
     @Column(name = "EstadoId")
     private Integer EstadoId;
 
-    @Column(name = "DireccionCiudad", columnDefinition = "nchar(100)")
+    @Column(name = "DireccionCiudad", columnDefinition = "nchar(100)", length = 100)
     private String DireccionCiudad;
 
     @Column(name = "DireccionFax", columnDefinition = "nchar(200)")

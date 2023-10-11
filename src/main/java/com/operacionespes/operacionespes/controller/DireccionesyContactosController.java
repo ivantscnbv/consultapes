@@ -1,7 +1,7 @@
-package com.operacionespes.operacionespes.controller;
+/*package com.operacionespes.operacionespes.controller;
 
-import com.operacionespes.operacionespes.dto.QueryContactosDto;
-import com.operacionespes.operacionespes.dto.QueryDireccionesDto;
+import com.operacionespes.operacionespes.dto.QueryContactosODCEDto;
+import com.operacionespes.operacionespes.dto.QueryDireccionesODCEDto;
 import com.operacionespes.operacionespes.repository.DireccionesyContactosRepository;
 import com.operacionespes.operacionespes.response.ConsultaResultadoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,18 +34,18 @@ public class DireccionesyContactosController {
 
         // Paso 2: Utiliza el resultado de la primera consulta como parámetro para la segunda consulta
 
-        List<QueryDireccionesDto> resultadosIntermedios = new ArrayList<>();
+        List<QueryDireccionesODCEDto> resultadosIntermedios = new ArrayList<>();
         for (Integer ArbolId : arbolIds) {
-            List<QueryDireccionesDto> direccionesyContactos = direccionesyContactosRepository.obtenerDireccionesQuery(ArbolId);
+            List<QueryDireccionesODCEDto> direccionesyContactos = direccionesyContactosRepository.obtenerDireccionesQuery(ArbolId);
             resultadosIntermedios.addAll(direccionesyContactos);
         }
         consultaResultado.setResultadosIntermedios(resultadosIntermedios);
 
         // Paso 3: Utiliza el resultado de la segunda consulta como parámetro para la tercera consulta
-        List<QueryContactosDto> resultadosFinales = new ArrayList<>();
-        for (QueryDireccionesDto direccion : resultadosIntermedios) {
+        List<QueryContactosODCEDto> resultadosFinales = new ArrayList<>();
+        for (QueryDireccionesODCEDto direccion : resultadosIntermedios) {
             Integer DireccionId = direccion.getDireccionId();
-            List<QueryContactosDto> contactos = direccionesyContactosRepository.obtenerContactosIdQuery(DireccionId);
+            List<QueryContactosODCEDto> contactos = direccionesyContactosRepository.obtenerContactosIdQuery(DireccionId);
             resultadosFinales.addAll(contactos);
         }
         consultaResultado.setResultadosFinales(resultadosFinales);
@@ -53,4 +53,4 @@ public class DireccionesyContactosController {
         // Devuelve los resultados combinados
         return new ResponseEntity<>(consultaResultado, HttpStatus.OK);
     }
-}
+}*/

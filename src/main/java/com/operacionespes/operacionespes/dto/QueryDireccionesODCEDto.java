@@ -16,14 +16,14 @@ public class QueryDireccionesODCEDto {
     private Integer DireccionId;
     @JsonProperty("tipoDireccionId")
     private Integer tipoDireccion;
-    @JsonProperty("TipoDireccionDescripcion")
+    @JsonProperty("tipoDireccionDescripcion")
     private String tipoDireccionDescripcion;
-    @JsonProperty("CalleNumero")
+    @JsonProperty("calleNumero")
     private String calleNumero;
     @JsonProperty("Ciudad")
     private String ciudad;
-    @JsonProperty("CodigoPostal")
-    private Integer codigoPostal;
+    @JsonProperty("codigoPostal")
+    private String codigoPostal;
     @JsonProperty("Colonia")
     private String colonia;
     @JsonProperty("ColoniaId")
@@ -35,15 +35,15 @@ public class QueryDireccionesODCEDto {
     @JsonProperty("Estado")
     private String estado;
     @JsonProperty("EstadoPaisId")
-    private String estadoPaisId;
+    private Integer estadoPaisId;
     @JsonProperty("Pais")
     private String pais;
     @JsonProperty("PaisId")
-    private Integer paisId;
+    private Short paisId;
     @JsonProperty("Telefono")
-    private Integer telefono;
-    @JsonProperty("Faxes")
-    private Integer faxes;
+    private String telefono;
+    @JsonProperty("faxes")
+    private String faxes;
     @JsonProperty("Activos")
     private Integer activos;
 }

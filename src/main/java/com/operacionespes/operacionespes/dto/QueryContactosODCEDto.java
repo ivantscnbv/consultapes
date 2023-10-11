@@ -15,12 +15,12 @@ public class QueryContactosODCEDto {
     private String titulo;
     @JsonProperty ("Nombre")
     private String nombre;
-    @JsonProperty ("Paterno")
+    @JsonProperty ("paterno")
     private String paterno;
-    @JsonProperty("Materno")
+    @JsonProperty("materno")
     private String materno;
-    @JsonProperty("CargoId")
+    @JsonProperty("cargoId")
     private Integer cargoId;
-    @JsonProperty("CargoDescripcion")
+    @JsonProperty("cargoDescripcion")
     private String cargoDescripcion;
 }
